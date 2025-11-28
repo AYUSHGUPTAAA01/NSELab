@@ -1,12 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 12 10:15:26 2025
-
-@author: navee
-"""
-
 def vigenere_encrypt(text, key):
     result = ""
+    key = ''.join(ch for ch in key if ch.isalpha())
     key_length = len(key)
     key_int = [ord(i.lower()) - ord('a') for i in key]
     for i, char in enumerate(text):
@@ -20,6 +14,7 @@ def vigenere_encrypt(text, key):
 
 def vigenere_decrypt(ciphertext, key):
     result = ""
+    key = ''.join(ch for ch in key if ch.isalpha())
     key_length = len(key)
     key_int = [ord(i.lower()) - ord('a') for i in key]
     for i, char in enumerate(ciphertext):
@@ -32,8 +27,8 @@ def vigenere_decrypt(ciphertext, key):
     return result
 
 # Example usage
-plaintext = "Network Security"
-key = "key"
+plaintext = input("Enter plaintext: ")
+key = input("Enter key: ")
 ciphertext = vigenere_encrypt(plaintext, key)
 print("Encrypted:", ciphertext)
 print("Decrypted:", vigenere_decrypt(ciphertext, key))
